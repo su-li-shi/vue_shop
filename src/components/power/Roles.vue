@@ -258,7 +258,7 @@ export default {
     },
     //  监听修改角色对话框的关闭事件
     editDialogClosed() {
-      this.$refs.addFormRef.resetFields()
+      this.$refs.editFormRef.resetFields()
     },
     //点击按钮，添加新角色
     addRoles() {
@@ -291,7 +291,7 @@ export default {
     // 修改角色信息并提交
     editRoleInfo() {
       this.$refs.editFormRef.validate(async valid =>{
-        // console.log(valid)
+        console.log(valid)
         if(!valid) return
         // 发起修改用户信息的数据请求
         const { data: res} =await this.$http.put('roles/' + this.editForm.roleId,{
@@ -350,9 +350,6 @@ export default {
       }
       // await this.getRolesList()
       role.children = res.data
-      
-      
-    
     },
     // 展示分配权限的对话框
     async showSetRightDialog(role) {
@@ -400,8 +397,6 @@ export default {
       this.$message.success('分配权限成功！')
       await this.getRolesList()
       this.setRightDialogVisible = false
-      
-      
     }
   }
 }

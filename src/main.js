@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 //导入全局样式表
 import './assets/css/global.css'
 import axios from "axios";
+import treeTable from 'vue-table-with-tree-grid'
 //配置请求的根路径
 axios.defaults.baseURL = 'http://119.23.53.78:8888/api/private/v1/'
 axios.interceptors.request.use(config => {
@@ -22,6 +23,8 @@ Vue.use(ElementUI);
 
 
 Vue.config.productionTip = false
+
+Vue.component('tree-table',treeTable)
 
 new Vue({
   router,
