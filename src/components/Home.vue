@@ -22,7 +22,7 @@
             :collapse="isCollapse"
             :collapse-transition="false"
             router
-            :default-active="$route.path"
+            :default-active="activePath"
         >
           <!-- 一级菜单 -->
           <!-- 这里:index="item.id + ''"用到了隐式转换，类型由整型换为了字符串型-->
@@ -36,7 +36,12 @@
             </template>
             
           <!-- 二级菜单 -->
-            <el-menu-item :index="'/' + subItem.path + ''" v-for="subItem in item.children" :key="subItem.id">
+            <el-menu-item
+                :index="subItem.path + ''"
+                v-for="subItem in item.children"
+                :key="subItem.id"
+                @click="saveNavState(subItem.path + '')"
+            >
               <template slot="title">
                 <!-- 图标 -->
                 <i class="el-icon-menu"></i>
@@ -70,11 +75,14 @@ export default {
         '145': 'el-icon-data-line'
       },
       // 是否折叠
-      isCollapse: false
+      isCollapse: false,
+      // 被激活的链接地址
+      activePath: ''
     }
   },
   created() {
     this.getMenuList()
+    this.activePath = window.sessionStorage.getItem('activePath')
   },
   name: "Home",
   methods: {
@@ -89,11 +97,15 @@ export default {
       this.menulist = res.data
       console.log(res)
     },
-    //点击按钮，切换菜单的折叠与展开
+    //  点击按钮，切换菜单的折叠与展开
     toggleCollapse() {
       this.isCollapse = !this.isCollapse
+    },
+    //  保存链接的激活状态
+    saveNavState(activePath){
+      window.sessionStorage.setItem('activePath',activePath)
+      this.activePath = activePath
     }
-    
   }
 }
 </script>
