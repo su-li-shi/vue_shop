@@ -10,6 +10,7 @@
     "axios": "^0.21.1",
     "china-city-data": "^1.0.1",
     "core-js": "^3.6.5",
+    "echarts": "^5.0.2",
     "element-china-area-data": "^5.0.2",
     "element-ui": "^2.14.1",
     "less": "^4.0.0",
