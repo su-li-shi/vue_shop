@@ -4,6 +4,7 @@ import router from './router/router'
 import ElementUI,{Message} from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+
 // 导入富文本编辑器
 import VueQuillEditor from "vue-quill-editor";
 // require styles 导入富文本编辑器对应的样式
